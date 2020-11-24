@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wsm.order.dao.mapper.OrderDOMapper">
+  <resultMap id="BaseResultMap" type="com.wsm.order.dao.model.OrderDO">
+    <!--@mbg.generated-->
+    <!--@Table `order`-->
+    <id column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="parent_order_id" jdbcType="BIGINT" property="parentOrderId" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="order_version_id" jdbcType="INTEGER" property="orderVersionId" />
+    <result column="order_factory" jdbcType="LONGVARCHAR" property="orderFactory" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="point_amount" jdbcType="DECIMAL" property="pointAmount" />
+    <result column="refund_amount" jdbcType="DECIMAL" property="refundAmount" />
+    <result column="source_id" jdbcType="INTEGER" property="sourceId" />
+    <result column="business_id" jdbcType="INTEGER" property="businessId" />
+    <result column="business_no" jdbcType="VARCHAR" property="businessNo" />
+    <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="charge_user_id" jdbcType="BIGINT" property="chargeUserId" />
+    <result column="overdue_time" jdbcType="TIMESTAMP" property="overdueTime" />
+    <result column="current_order_state_id" jdbcType="BIGINT" property="currentOrderStateId" />
+    <result column="current_order_state_name" jdbcType="VARCHAR" property="currentOrderStateName" />
+    <result column="last_process_time" jdbcType="TIMESTAMP" property="lastProcessTime" />
+    <result column="process_interval" jdbcType="INTEGER" property="processInterval" />
+    <result column="locked" jdbcType="TINYINT" property="locked" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
+    <result column="is_active" jdbcType="TINYINT" property="isActive" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    order_id, parent_order_id, description, order_version_id, order_factory, amount, 
+    point_amount, refund_amount, source_id, business_id, business_no, order_time, `status`, 
+    user_id, charge_user_id, overdue_time, current_order_state_id, current_order_state_name, 
+    last_process_time, process_interval, locked, creator, modifier, is_active, insert_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from `order`
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </select>
+  <insert id="insertSelective" keyColumn="order_id" keyProperty="orderId" parameterType="com.wsm.order.dao.model.OrderDO" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `order`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parentOrderId != null">
+        parent_order_id,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="orderVersionId != null">
+        order_version_id,
+      </if>
+      <if test="orderFactory != null">
+        order_factory,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="pointAmount != null">
+        point_amount,
+      </if>
+      <if test="refundAmount != null">
+        refund_amount,
+      </if>
+      <if test="sourceId != null">
+        source_id,
+      </if>
+      <if test="businessId != null">
+        business_id,
+      </if>
+      <if test="businessNo != null">
+        business_no,
+      </if>
+      <if test="orderTime != null">
+        order_time,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="chargeUserId != null">
+        charge_user_id,
+      </if>
+      <if test="overdueTime != null">
+        overdue_time,
+      </if>
+      <if test="currentOrderStateId != null">
+        current_order_state_id,
+      </if>
+      <if test="currentOrderStateName != null">
+        current_order_state_name,
+      </if>
+      <if test="lastProcessTime != null">
+        last_process_time,
+      </if>
+      <if test="processInterval != null">
+        process_interval,
+      </if>
+      <if test="locked != null">
+        locked,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="isActive != null">
+        is_active,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parentOrderId != null">
+        #{parentOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="orderVersionId != null">
+        #{orderVersionId,jdbcType=INTEGER},
+      </if>
+      <if test="orderFactory != null">
+        #{orderFactory,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="pointAmount != null">
+        #{pointAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="refundAmount != null">
+        #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceId != null">
+        #{sourceId,jdbcType=INTEGER},
+      </if>
+      <if test="businessId != null">
+        #{businessId,jdbcType=INTEGER},
+      </if>
+      <if test="businessNo != null">
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="chargeUserId != null">
+        #{chargeUserId,jdbcType=BIGINT},
+      </if>
+      <if test="overdueTime != null">
+        #{overdueTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="currentOrderStateId != null">
+        #{currentOrderStateId,jdbcType=BIGINT},
+      </if>
+      <if test="currentOrderStateName != null">
+        #{currentOrderStateName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastProcessTime != null">
+        #{lastProcessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processInterval != null">
+        #{processInterval,jdbcType=INTEGER},
+      </if>
+      <if test="locked != null">
+        #{locked,jdbcType=TINYINT},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        #{isActive,jdbcType=TINYINT},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wsm.order.dao.model.OrderDO">
+    <!--@mbg.generated-->
+    update `order`
+    <set>
+      <if test="parentOrderId != null">
+        parent_order_id = #{parentOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="orderVersionId != null">
+        order_version_id = #{orderVersionId,jdbcType=INTEGER},
+      </if>
+      <if test="orderFactory != null">
+        order_factory = #{orderFactory,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="pointAmount != null">
+        point_amount = #{pointAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="refundAmount != null">
+        refund_amount = #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceId != null">
+        source_id = #{sourceId,jdbcType=INTEGER},
+      </if>
+      <if test="businessId != null">
+        business_id = #{businessId,jdbcType=INTEGER},
+      </if>
+      <if test="businessNo != null">
+        business_no = #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="chargeUserId != null">
+        charge_user_id = #{chargeUserId,jdbcType=BIGINT},
+      </if>
+      <if test="overdueTime != null">
+        overdue_time = #{overdueTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="currentOrderStateId != null">
+        current_order_state_id = #{currentOrderStateId,jdbcType=BIGINT},
+      </if>
+      <if test="currentOrderStateName != null">
+        current_order_state_name = #{currentOrderStateName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastProcessTime != null">
+        last_process_time = #{lastProcessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processInterval != null">
+        process_interval = #{processInterval,jdbcType=INTEGER},
+      </if>
+      <if test="locked != null">
+        locked = #{locked,jdbcType=TINYINT},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        is_active = #{isActive,jdbcType=TINYINT},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+
+
+  <select id="getByOrderIdWithLock" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `order`
+    where order_id = #{orderId} for update
+  </select>
+</mapper>

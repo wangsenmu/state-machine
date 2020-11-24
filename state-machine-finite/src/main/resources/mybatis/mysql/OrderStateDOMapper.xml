@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wsm.order.dao.mapper.OrderStateDOMapper">
+    <resultMap id="BaseResultMap" type="com.wsm.order.dao.model.OrderStateDO">
+        <!--@mbg.generated-->
+        <!--@Table order_state-->
+        <id column="order_state_id" jdbcType="BIGINT" property="orderStateId"/>
+        <result column="order_id" jdbcType="BIGINT" property="orderId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="prev_order_state_id" jdbcType="BIGINT" property="prevOrderStateId"/>
+        <result column="overdue_time" jdbcType="TIMESTAMP" property="overdueTime"/>
+        <result column="last_process_time" jdbcType="TIMESTAMP" property="lastProcessTime"/>
+        <result column="process_interval" jdbcType="INTEGER" property="processInterval"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="creator" jdbcType="VARCHAR" property="creator"/>
+        <result column="modifier" jdbcType="VARCHAR" property="modifier"/>
+        <result column="is_active" jdbcType="TINYINT" property="isActive"/>
+        <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        order_state_id, order_id, `name`, prev_order_state_id, overdue_time, last_process_time,
+        process_interval, `status`, creator, modifier, is_active, insert_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from order_state
+        where order_state_id = #{orderStateId,jdbcType=BIGINT}
+    </select>
+
+
+    <select id="getByOrderStateIdWithLock" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from order_state
+        where order_state_id = #{orderStateId,jdbcType=BIGINT}
+                for
+        update
+    </select>
+
+    <insert id="insertSelective" keyColumn="order_state_id" keyProperty="orderStateId"
+            parameterType="com.wsm.order.dao.model.OrderStateDO" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into order_state
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="prevOrderStateId != null">
+                prev_order_state_id,
+            </if>
+            <if test="overdueTime != null">
+                overdue_time,
+            </if>
+            <if test="lastProcessTime != null">
+                last_process_time,
+            </if>
+            <if test="processInterval != null">
+                process_interval,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="isActive != null">
+                is_active,
+            </if>
+            <if test="insertTime != null">
+                insert_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">
+                #{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="prevOrderStateId != null">
+                #{prevOrderStateId,jdbcType=BIGINT},
+            </if>
+            <if test="overdueTime != null">
+                #{overdueTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastProcessTime != null">
+                #{lastProcessTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="processInterval != null">
+                #{processInterval,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="isActive != null">
+                #{isActive,jdbcType=TINYINT},
+            </if>
+            <if test="insertTime != null">
+                #{insertTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wsm.order.dao.model.OrderStateDO">
+        <!--@mbg.generated-->
+        update order_state
+        <set>
+            <if test="orderId != null">
+                order_id = #{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="prevOrderStateId != null">
+                prev_order_state_id = #{prevOrderStateId,jdbcType=BIGINT},
+            </if>
+            <if test="overdueTime != null">
+                overdue_time = #{overdueTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastProcessTime != null">
+                last_process_time = #{lastProcessTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="processInterval != null">
+                process_interval = #{processInterval,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="isActive != null">
+                is_active = #{isActive,jdbcType=TINYINT},
+            </if>
+            <if test="insertTime != null">
+                insert_time = #{insertTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where order_state_id = #{orderStateId,jdbcType=BIGINT}
+    </update>
+</mapper>
